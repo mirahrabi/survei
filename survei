@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Survei Kepuasan</title>
+    <title>Survei Pengguna</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,7 +19,7 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             width: 300px;
         }
         h2 {
@@ -31,18 +31,20 @@
         input, select, textarea {
             width: 100%;
             padding: 8px;
-            margin: 5px 0;
+            margin-top: 5px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         button {
             width: 100%;
             padding: 10px;
+            border: none;
             background: #28a745;
             color: white;
-            border: none;
-            border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
+            border-radius: 5px;
         }
         button:hover {
             background: #218838;
@@ -51,24 +53,16 @@
 </head>
 <body>
     <div class="container">
-        <h2>Survei Kepuasan</h2>
-        <form>
-            <label for="nama">Nama:</label>
-            <input type="text" id="nama" name="nama" required>
+        <h2>Survei Pengguna</h2>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
             
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             
-            <label for="kepuasan">Seberapa puas Anda dengan layanan kami?</label>
-            <select id="kepuasan" name="kepuasan">
-                <option value="sangat_puas">Sangat Puas</option>
-                <option value="puas">Puas</option>
-                <option value="cukup_puas">Cukup Puas</option>
-                <option value="tidak_puas">Tidak Puas</option>
-            </select>
-            
-            <label for="saran">Saran atau Komentar:</label>
-            <textarea id="saran" name="saran" rows="4"></textarea>
+            <label for="feedback">Masukan Anda:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
             
             <button type="submit">Kirim</button>
         </form>
