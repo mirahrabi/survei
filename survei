@@ -1,67 +1,47 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Survei Sederhana</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-        .container {
-            width: 50%;
-            margin: 50px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-    </style>
+    <title>Simple Survey</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>Survei Kepuasan</h2>
-        <form action="https://formspree.io/f/mnqepqrg" method="POST">
-            <label for="name">Nama:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="rating">Seberapa puas Anda dengan layanan kami?</label>
-            <select id="rating" name="rating">
-                <option value="sangat_puas">Sangat Puas</option>
-                <option value="puas">Puas</option>
-                <option value="cukup">Cukup</option>
-                <option value="kurang_puas">Kurang Puas</option>
-            </select>
-            
-            <label for="comments">Komentar:</label>
-            <textarea id="comments" name="comments" rows="4"></textarea>
-            
-            <button type="submit">Kirim</button>
+        <h1>Customer Satisfaction Survey</h1>
+        <form action="#" method="post">
+            <div class="question">
+                <label for="name">1. What is your name?</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="question">
+                <label for="email">2. What is your email?</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="question">
+                <label>3. How satisfied are you with our service?</label>
+                <div>
+                    <input type="radio" id="satisfied" name="satisfaction" value="satisfied" required>
+                    <label for="satisfied">Satisfied</label>
+                </div>
+                <div>
+                    <input type="radio" id="neutral" name="satisfaction" value="neutral">
+                    <label for="neutral">Neutral</label>
+                </div>
+                <div>
+                    <input type="radio" id="dissatisfied" name="satisfaction" value="dissatisfied">
+                    <label for="dissatisfied">Dissatisfied</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <label for="feedback">4. Any additional feedback?</label>
+                <textarea id="feedback" name="feedback" rows="4"></textarea>
+            </div>
+
+            <button type="submit">Submit</button>
         </form>
     </div>
 </body>
