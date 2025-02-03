@@ -1,32 +1,78 @@
-const surveyData = [];
-
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("survey-form");
-    const resultContainer = document.getElementById("result-container");
-    
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        
-        const name = document.getElementById("name").value;
-        const age = document.getElementById("age").value;
-        const feedback = document.getElementById("feedback").value;
-        
-        if (name && age && feedback) {
-            surveyData.push({ name, age, feedback });
-            displayResults();
-            form.reset();
-        } else {
-            alert("Harap isi semua bidang sebelum mengirimkan formulir.");
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survei Kepuasan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
-    });
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h2>Survei Kepuasan Pelanggan</h2>
+    <form id="surveyForm">
+        <div class="form-group">
+            <label>Nama:</label>
+            <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+            <label>Seberapa puas Anda dengan layanan kami?</label><br>
+            <input type="radio" name="kepuasan" value="Sangat Puas" required> Sangat Puas<br>
+            <input type="radio" name="kepuasan" value="Puas"> Puas<br>
+            <input type="radio" name="kepuasan" value="Cukup"> Cukup<br>
+            <input type="radio" name="kepuasan" value="Kurang"> Kurang
+        </div>
+        <div class="form-group">
+            <label>Masukan atau Saran:</label><br>
+            <textarea id="saran" rows="4" cols="50"></textarea>
+        </div>
+        <button type="submit">Kirim</button>
+    </form>
 
-    function displayResults() {
-        resultContainer.innerHTML = "<h2>Hasil Survei</h2>";
-        surveyData.forEach((entry, index) => {
-            const entryDiv = document.createElement("div");
-            entryDiv.classList.add("survey-entry");
-            entryDiv.innerHTML = `<p><strong>${index + 1}. ${entry.name}</strong> (Usia: ${entry.age})</p><p>Feedback: ${entry.feedback}</p>`;
-            resultContainer.appendChild(entryDiv);
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let name = document.getElementById('name').value;
+            let kepuasan = document.querySelector('input[name="kepuasan"]:checked').value;
+            let saran = document.getElementById('saran').value;
+            
+            console.log("Nama:", name);
+            console.log("Kepuasan:", kepuasan);
+            console.log("Saran:", saran);
+            
+            alert("Terima kasih atas partisipasi Anda!");
+            document.getElementById('surveyForm').reset();
         });
-    }
-});
+    </script>
+</body>
+</html>
