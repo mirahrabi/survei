@@ -7,72 +7,71 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
             background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        form {
+        .container {
             background: white;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
         }
         label {
             font-weight: bold;
         }
-        .form-group {
-            margin-bottom: 15px;
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
         button {
-            background-color: #28a745;
-            color: white;
+            width: 100%;
             padding: 10px;
+            background: #28a745;
+            color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #218838;
+            background: #218838;
         }
     </style>
 </head>
 <body>
-    <h2>Survei Kepuasan Pelanggan</h2>
-    <form id="surveyForm">
-        <div class="form-group">
-            <label>Nama:</label>
-            <input type="text" id="name" required>
-        </div>
-        <div class="form-group">
-            <label>Seberapa puas Anda dengan layanan kami?</label><br>
-            <input type="radio" name="kepuasan" value="Sangat Puas" required> Sangat Puas<br>
-            <input type="radio" name="kepuasan" value="Puas"> Puas<br>
-            <input type="radio" name="kepuasan" value="Cukup"> Cukup<br>
-            <input type="radio" name="kepuasan" value="Kurang"> Kurang
-        </div>
-        <div class="form-group">
-            <label>Masukan atau Saran:</label><br>
-            <textarea id="saran" rows="4" cols="50"></textarea>
-        </div>
-        <button type="submit">Kirim</button>
-    </form>
-
-    <script>
-        document.getElementById('surveyForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+    <div class="container">
+        <h2>Survei Kepuasan</h2>
+        <form>
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required>
             
-            let name = document.getElementById('name').value;
-            let kepuasan = document.querySelector('input[name="kepuasan"]:checked').value;
-            let saran = document.getElementById('saran').value;
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
             
-            console.log("Nama:", name);
-            console.log("Kepuasan:", kepuasan);
-            console.log("Saran:", saran);
+            <label for="kepuasan">Seberapa puas Anda dengan layanan kami?</label>
+            <select id="kepuasan" name="kepuasan">
+                <option value="sangat_puas">Sangat Puas</option>
+                <option value="puas">Puas</option>
+                <option value="cukup_puas">Cukup Puas</option>
+                <option value="tidak_puas">Tidak Puas</option>
+            </select>
             
-            alert("Terima kasih atas partisipasi Anda!");
-            document.getElementById('surveyForm').reset();
-        });
-    </script>
+            <label for="saran">Saran atau Komentar:</label>
+            <textarea id="saran" name="saran" rows="4"></textarea>
+            
+            <button type="submit">Kirim</button>
+        </form>
+    </div>
 </body>
 </html>
