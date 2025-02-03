@@ -1,0 +1,32 @@
+const surveyData = [];
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("survey-form");
+    const resultContainer = document.getElementById("result-container");
+    
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        const feedback = document.getElementById("feedback").value;
+        
+        if (name && age && feedback) {
+            surveyData.push({ name, age, feedback });
+            displayResults();
+            form.reset();
+        } else {
+            alert("Harap isi semua bidang sebelum mengirimkan formulir.");
+        }
+    });
+
+    function displayResults() {
+        resultContainer.innerHTML = "<h2>Hasil Survei</h2>";
+        surveyData.forEach((entry, index) => {
+            const entryDiv = document.createElement("div");
+            entryDiv.classList.add("survey-entry");
+            entryDiv.innerHTML = `<p><strong>${index + 1}. ${entry.name}</strong> (Usia: ${entry.age})</p><p>Feedback: ${entry.feedback}</p>`;
+            resultContainer.appendChild(entryDiv);
+        });
+    }
+});
